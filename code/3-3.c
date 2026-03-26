@@ -1,26 +1,21 @@
 #include <stdio.h>
+#include <stdarg.h>
 
-int global_var = 0;
+int average(int count, ...) {
+    va_list ap;
+    int sum = 0;
 
-void test_scope() {
-    static int static_var = 0;
-    int local_var = 0;
+    va_start(ap, count); 
+    for (int i = 0; i < count; i++) {
+        sum += va_arg(ap, int); 
+    }
+    va_end(ap);
 
-    global_var++;
-    static_var++;
-    local_var++;
-
-    printf("global_var: %d\n", global_var);
-    printf("static_var: %d\n", static_var);
-    printf("local_var: %d\n", local_var);
+    return sum / count;
 }
 
 int main() {
-    test_scope();
-    printf("\n");
-    test_scope();
-    printf("\n");
-    test_scope();
-
+    printf("%d\n", average(3, 10, 20, 30));
+    printf("%d\n", average(5, 10, 20, 30, 40, 50));
     return 0;
 }
