@@ -1,21 +1,17 @@
 #include <stdio.h>
 
+void swap(int *x, int *y) {
+    int temp = *x;
+    *x = *y;
+    *y = temp;
+}
 
 int main() {
-    print(void);
-    int square(int n);
+    int x = 100, y = 200;
 
-    int num = 5;
-    int result = square(num);
-    printf("%d, %d\n", num, result);
+    printf("x = %d, y = %d\n", x, y);
+    swap(&x, &y);
+    printf("x = %d, y = %d\n", x, y);
 
     return 0;
-}
-
-void print() {
-    printf("Welcome to Computer Programming 03 Lab!\n");
-}
-
-int square(int n) {
-    return n * n;
 }
